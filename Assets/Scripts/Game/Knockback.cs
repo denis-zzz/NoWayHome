@@ -40,8 +40,11 @@ public class Knockback : MonoBehaviour
                     difference = difference.normalized * thrust;
                     hit.AddForce(difference, ForceMode2D.Impulse);
 
+                    float damage =
+                    this.transform.GetComponent<Bandit>().damage;
+
                     hit.GetComponent<Player>().ChangeState(PlayerState.stagger);
-                    other.GetComponent<Player>().WaitKnock();
+                    other.GetComponent<Player>().WaitKnock(damage);
                 }
             }
         }

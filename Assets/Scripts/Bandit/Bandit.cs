@@ -18,6 +18,9 @@ public class Bandit : MonoBehaviour
     public float attack_radius;
     private Rigidbody2D rigid;
     public BanditState state;
+    public float damage;
+    public PV_Item equiped_weapon;
+    public HealthBar healthbar;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,9 @@ public class Bandit : MonoBehaviour
         target = GameObject.FindWithTag("Player").transform;
         state = BanditState.walk;
         pv = max_pv.initial_value;
+        damage = equiped_weapon.puissance;
+        healthbar.SetMaxHealth(max_pv.initial_value);
+        healthbar.SetHealth(pv);
     }
 
     // Update is called once per frame
@@ -60,6 +66,7 @@ public class Bandit : MonoBehaviour
     public void TakeDamage(float damage)
     {
         pv -= damage;
+        healthbar.SetHealth(pv);
         if (pv <= 0)
         {
             Destroy(gameObject);

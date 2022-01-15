@@ -20,9 +20,11 @@ public class Player : MonoBehaviour
     private Animator anim;
     public PV_Item equiped_weapon;
     public float damage;
+    public Float_Value max_pv;
     public float pv;
     private PlayerShoot shoot;
     public int ammo;
+    public HealthBar healthbar;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,10 @@ public class Player : MonoBehaviour
 
         damage = equiped_weapon.puissance;
         shoot = GetComponent<PlayerShoot>();
+
+        pv = max_pv.initial_value;
+        healthbar.SetMaxHealth(max_pv.initial_value);
+        healthbar.SetHealth(pv);
     }
 
     // Update is called once per frame
@@ -103,9 +109,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void WaitKnock()
+    public void WaitKnock(float damage)
     {
         StartCoroutine(KnockCo());
+        TakeDamage(damage);
     }
 
     private IEnumerator KnockCo()
@@ -113,5 +120,11 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(.2f);
         rigid.velocity = Vector2.zero;
         ChangeState(PlayerState.walk);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        pv -= damage;
+        healthbar.SetHealth(pv);
     }
 }
