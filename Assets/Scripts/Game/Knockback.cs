@@ -15,6 +15,7 @@ public class Knockback : MonoBehaviour
             if (hit != null)
             {
                 if (other.gameObject.CompareTag("Bandit")
+                && !this.gameObject.CompareTag("Bandit")
                 && other.GetComponent<Bandit>().state != BanditState.stagger
                 && other.isTrigger)
                 {
@@ -26,7 +27,8 @@ public class Knockback : MonoBehaviour
                     hit.GetComponent<Bandit>().ChangeState(BanditState.stagger);
 
                     float damage =
-                    this.transform.parent.GetComponent<Player>().damage;
+                    this.transform.parent.GetComponent<Player>().
+                    damage.runtime_value;
 
                     other.GetComponent<Bandit>().WaitKnock(damage);
                 }

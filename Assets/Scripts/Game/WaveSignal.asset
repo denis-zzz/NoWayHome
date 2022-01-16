@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af2842c1ad4327d40815813fa26a9f39, type: 3}
-  m_Name: GunDamage
+  m_Script: {fileID: 11500000, guid: 0cfbe18cbe25d934b866c48862da926b, type: 3}
+  m_Name: WaveSignal
   m_EditorClassIdentifier: 
-  initial_value: 2
+  listeners: []

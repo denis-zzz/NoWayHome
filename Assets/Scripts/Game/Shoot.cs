@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utils;
 
-public class PlayerShoot : MonoBehaviour
+public class Shoot : MonoBehaviour
 {
     private Transform shootTransform;
     public Vector3 attackDir;
@@ -22,13 +22,16 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 mousePos = UtilsClass.GetMouseWorldPosition();
-        attackDir = (mousePos - transform.position).normalized;
-        float angle = Mathf.Atan2(attackDir.y, attackDir.x) * Mathf.Rad2Deg;
-        shootTransform.eulerAngles = new Vector3(0, 0, angle);
+        if (this.gameObject.CompareTag("Player"))
+        {
+            Vector3 mousePos = UtilsClass.GetMouseWorldPosition();
+            attackDir = (mousePos - transform.position).normalized;
+            float angle = Mathf.Atan2(attackDir.y, attackDir.x) * Mathf.Rad2Deg;
+            shootTransform.eulerAngles = new Vector3(0, 0, angle);
+        }
     }
 
-    public void Shoot()
+    public void Fire()
     {
         anim.SetTrigger("Shoot");
 
@@ -37,5 +40,14 @@ public class PlayerShoot : MonoBehaviour
 
         Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
         rigid.AddForce(attackDir * bulletForce, ForceMode2D.Impulse);
+    }
+
+    public void BanditFire(Transform target)
+    {
+        attackDir = (target.position - transform.position).normalized;
+        float angle = Mathf.Atan2(attackDir.y, attackDir.x) * Mathf.Rad2Deg;
+        shootTransform.eulerAngles = new Vector3(0, 0, angle);
+
+        Fire();
     }
 }

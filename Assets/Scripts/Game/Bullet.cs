@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public Float_Value gun_damage;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if ((other.gameObject.CompareTag("Bandit") ||
@@ -18,7 +19,7 @@ public class Bullet : MonoBehaviour
                 {
                     float damage =
                     GameObject.FindGameObjectWithTag("Player").
-                    GetComponent<Player>().damage;
+                    GetComponent<Player>().damage.runtime_value;
 
                     other.GetComponent<Bandit>().TakeDamage(damage);
                 }
@@ -27,8 +28,8 @@ public class Bullet : MonoBehaviour
                 && other.GetComponent<Player>().state != PlayerState.stagger
                 && other.isTrigger)
                 {
-
-
+                    other.GetComponent<Player>().
+                    TakeDamage(gun_damage.runtime_value);
                 }
             }
         }

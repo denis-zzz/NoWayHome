@@ -19,12 +19,13 @@ public class Player : MonoBehaviour
     private Vector3 change;
     private Animator anim;
     public PV_Item equiped_weapon;
-    public float damage;
     public Float_Value max_pv;
     public float pv;
-    private PlayerShoot shoot;
+    private Shoot shoot;
     public int ammo;
     public HealthBar healthbar;
+    public Zone zone;
+    public Float_Value damage;
 
     // Start is called before the first frame update
     void Start()
@@ -34,11 +35,11 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         og_speed = speed;
 
-        damage = equiped_weapon.puissance;
-        shoot = GetComponent<PlayerShoot>();
+        damage.runtime_value = equiped_weapon.puissance;
+        shoot = GetComponent<Shoot>();
 
-        pv = max_pv.initial_value;
-        healthbar.SetMaxHealth(max_pv.initial_value);
+        pv = max_pv.runtime_value;
+        healthbar.SetMaxHealth(max_pv.runtime_value);
         healthbar.SetHealth(pv);
     }
 
@@ -80,7 +81,7 @@ public class Player : MonoBehaviour
         {
             if (ammo > 0)
             {
-                shoot.Shoot();
+                shoot.Fire();
                 ammo -= 1;
             }
         }
