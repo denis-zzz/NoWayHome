@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e75326e8f767b443954fdd5682b141c, type: 3}
+  m_Name: Features
+  m_EditorClassIdentifier: 
+  compteur_tir: 0
+  compteur_mort: 0
+  mort_tir: 0
+  temps_immobile: 0
+  temps_sprint: 0
+  compteur_interactions: 0
+  compteur_dialogue: 0
+  compteur_loot: 0
+  compteur_killer: 0
+  compteur_socializer: 0
