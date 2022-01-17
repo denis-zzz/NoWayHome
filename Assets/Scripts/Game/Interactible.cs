@@ -16,7 +16,7 @@ public class Interactible : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && playerInRange)
         {
-            interaction.raise();
+            interagit.raise();
 
             if (dialogBox.activeInHierarchy)
             {
