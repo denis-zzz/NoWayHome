@@ -16,6 +16,8 @@ public class Interactible : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && playerInRange)
         {
+            interaction.raise();
+
             if (dialogBox.activeInHierarchy)
             {
                 dialogBox.SetActive(false);
@@ -24,8 +26,10 @@ public class Interactible : MonoBehaviour
             else
             {
                 dialogBox.SetActive(true);
+
                 if (gameObject.CompareTag("Habitant"))
                     dialogue.raise();
+
                 dialogText.gameObject.SetActive(true);
                 dialogText.text = dialog;
             }
@@ -37,7 +41,6 @@ public class Interactible : MonoBehaviour
         if (other.CompareTag("Player") && !other.isTrigger
         && !other.CompareTag("Bandit"))
         {
-            interagit.raise();
             playerInRange = true;
         }
     }
