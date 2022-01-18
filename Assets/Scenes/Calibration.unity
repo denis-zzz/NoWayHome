@@ -282,6 +282,9 @@ GameObject:
   - component: {fileID: 121487297}
   - component: {fileID: 121487296}
   - component: {fileID: 121487298}
+  - component: {fileID: 121487300}
+  - component: {fileID: 121487299}
+  - component: {fileID: 121487301}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -305,6 +308,7 @@ MonoBehaviour:
   item_generator: {fileID: 610668900}
   bandit_generator: {fileID: 1247222321}
   nombre_bandit: {fileID: 11400000, guid: d1125dacaea218848b97db40aacfab28, type: 2}
+  features: {fileID: 11400000, guid: 5f9ea0769511eb341b10f570e6637f6b, type: 2}
 --- !u!4 &121487297
 Transform:
   m_ObjectHideFlags: 0
@@ -338,6 +342,90 @@ MonoBehaviour:
       - m_Target: {fileID: 121487296}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: GenerateBandit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &121487299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121487295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc5b2b92a755a4499b29f5afe7ee864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: e8f5f657c09351543ab3e5159c361835, type: 2}
+  signalEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 121487296}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: increase_cpt_interactions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &121487300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121487295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc5b2b92a755a4499b29f5afe7ee864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: c737360f2e25f6d4ab6dcd87ae1469fa, type: 2}
+  signalEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 121487296}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: increase_cpt_dialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &121487301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121487295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc5b2b92a755a4499b29f5afe7ee864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: bfbd40582f300c348956d61e2206bc27, type: 2}
+  signalEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 121487296}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: increase_cpt_loot
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9325,6 +9413,7 @@ Transform:
   - {fileID: 446879319}
   - {fileID: 1443632941}
   - {fileID: 1850396739}
+  - {fileID: 1627059984}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9342,12 +9431,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   state: 0
+  equiped_weapon: {fileID: 0}
   max_pv: {fileID: 11400000, guid: 9355414969e9dad4a9e0cf5241bad155, type: 2}
   pv: 0
   ammo: 10
   healthbar: {fileID: 1850396740}
   zone: {fileID: 0}
   damage: {fileID: 11400000, guid: bbc7f24de947f07479ef9b67b0fbd7b3, type: 2}
+  inventory: {fileID: 11400000, guid: e12d6b9939268754db59502e76219f97, type: 2}
 --- !u!61 &1441205617
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9645,6 +9736,94 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd1df2a1f3133e446a83b393dd6f9677, type: 3}
+--- !u!1 &1627059983
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1627059984}
+  - component: {fileID: 1627059985}
+  - component: {fileID: 1627059986}
+  m_Layer: 0
+  m_Name: Item Received
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1627059984
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627059983}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1441205615}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1627059985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627059983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc5b2b92a755a4499b29f5afe7ee864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: bfbd40582f300c348956d61e2206bc27, type: 2}
+  signalEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1441205616}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: receive_item
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1627059986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627059983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc5b2b92a755a4499b29f5afe7ee864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: 333a07e6991f2cc439a589ca9d847c78, type: 2}
+  signalEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1441205616}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: item_received
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1850396738
 GameObject:
   m_ObjectHideFlags: 0

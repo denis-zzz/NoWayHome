@@ -14,7 +14,7 @@ public class Interactible : MonoBehaviour
 
     public virtual void Update()
     {
-        if (Input.GetButtonDown("Fire1") && playerInRange)
+        if (Input.GetKeyDown("space") && playerInRange)
         {
             interagit.raise();
 
@@ -26,12 +26,13 @@ public class Interactible : MonoBehaviour
             else
             {
                 dialogBox.SetActive(true);
+                dialogText.gameObject.SetActive(true);
 
                 if (gameObject.CompareTag("Habitant"))
+                {
                     dialogue.raise();
-
-                dialogText.gameObject.SetActive(true);
-                dialogText.text = dialog;
+                    dialogText.text = dialog;
+                }
             }
         }
     }

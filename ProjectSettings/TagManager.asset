@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bandit
   - Zone
+  - Habitant
   layers:
   - Default
   - TransparentFX

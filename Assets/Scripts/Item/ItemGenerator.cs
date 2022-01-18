@@ -16,7 +16,7 @@ public class ItemGenerator : MonoBehaviour
         switch (nom)
         {
             case "argent":
-                item = new Item();
+                item = ScriptableObject.CreateInstance<Item>();
                 item.nom = "Argent";
                 item.prix = 0;
                 item.quantite = nombre;
@@ -24,7 +24,7 @@ public class ItemGenerator : MonoBehaviour
                 return item;
 
             case "soin":
-                pv_item = new PV_Item();
+                pv_item = ScriptableObject.CreateInstance<PV_Item>();
                 pv_item.nom = "Soin";
                 pv_item.prix = 10;
                 pv_item.quantite = nombre;
@@ -34,7 +34,7 @@ public class ItemGenerator : MonoBehaviour
                 return pv_item;
 
             case "document":
-                item = new Item();
+                item = ScriptableObject.CreateInstance<Item>();
                 item.nom = "Document";
                 item.prix = 0;
                 item.quantite = nombre;
@@ -42,7 +42,7 @@ public class ItemGenerator : MonoBehaviour
                 return item;
 
             case "bandage":
-                item = new Item();
+                item = ScriptableObject.CreateInstance<Item>();
                 item.nom = "Bandage";
                 item.prix = 4;
                 item.quantite = nombre;
@@ -50,7 +50,7 @@ public class ItemGenerator : MonoBehaviour
                 return item;
 
             case "herbe":
-                item = new Item();
+                item = ScriptableObject.CreateInstance<Item>();
                 item.nom = "Herbe";
                 item.prix = 4;
                 item.quantite = nombre;
@@ -58,7 +58,7 @@ public class ItemGenerator : MonoBehaviour
                 return item;
 
             case "couteau":
-                pv_item = new PV_Item();
+                pv_item = ScriptableObject.CreateInstance<PV_Item>();
                 pv_item.nom = "Couteau";
                 pv_item.prix = 20;
                 pv_item.quantite = nombre;
@@ -68,7 +68,7 @@ public class ItemGenerator : MonoBehaviour
                 return pv_item;
 
             case "pistolet":
-                pv_item = new PV_Item();
+                pv_item = ScriptableObject.CreateInstance<PV_Item>();
                 pv_item.nom = "Pistolet";
                 pv_item.prix = 30;
                 pv_item.quantite = nombre;
@@ -78,7 +78,7 @@ public class ItemGenerator : MonoBehaviour
                 return pv_item;
 
             case "munition":
-                item = new Item();
+                item = ScriptableObject.CreateInstance<Item>();
                 item.nom = "Munition";
                 item.prix = 1;
                 item.quantite = nombre;
@@ -86,7 +86,7 @@ public class ItemGenerator : MonoBehaviour
                 return item;
 
             case "ferraille":
-                item = new Item();
+                item = ScriptableObject.CreateInstance<Item>();
                 item.nom = "Ferraille";
                 item.prix = 1;
                 item.quantite = nombre;
@@ -94,7 +94,7 @@ public class ItemGenerator : MonoBehaviour
                 return item;
 
             case "poudre":
-                item = new Item();
+                item = ScriptableObject.CreateInstance<Item>();
                 item.nom = "Poudre";
                 item.prix = 1;
                 item.quantite = nombre;

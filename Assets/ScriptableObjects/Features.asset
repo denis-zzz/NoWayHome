@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   compteur_tir: 0
   compteur_mort: 0
-  mort_tir: 0
-  temps_immobile: 0
-  temps_sprint: 0
+  compteur_mort_tir: 0
+  compteur_immobile: 0
+  compteur_sprint: 0
   compteur_interactions: 0
   compteur_dialogue: 0
   compteur_loot: 0

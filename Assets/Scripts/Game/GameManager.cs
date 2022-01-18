@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        Item beginning_weapon = item_generator.Generate("couteau", 1);
+        Item beginning_weapon = item_generator.Generate("pistolet", 1);
         player.equiped_weapon = (PV_Item)beginning_weapon;
     }
 

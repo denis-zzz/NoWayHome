@@ -1,3 +1,4 @@
+using UnityEngine;
 public enum ItemType
 {
     argent,
@@ -10,7 +11,9 @@ public enum ItemType
     ferraille,
     poudre
 }
-public class Item
+
+[CreateAssetMenu]
+public class Item : ScriptableObject
 {
     public string nom;
     public float prix;

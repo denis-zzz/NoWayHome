@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     public HealthBar healthbar;
     public Zone zone;
     public Float_Value damage;
+    public Inventory inventory;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +47,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (state == PlayerState.interact)
+            return;
+
         change = Vector3.zero;
         speed = og_speed;
         change.x = Input.GetAxisRaw("Horizontal");
@@ -59,7 +63,7 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && state != PlayerState.attack
         && state != PlayerState.stagger)
         {
-            state = PlayerState.attack;
+            ChangeState(PlayerState.attack);
             StartCoroutine(AttackCo());
         }
     }
@@ -86,7 +90,8 @@ public class Player : MonoBehaviour
             }
         }
         yield return null;
-        state = PlayerState.walk;
+        if (state != PlayerState.interact)
+            ChangeState(PlayerState.walk);
     }
 
     private void Walk()
@@ -127,5 +132,17 @@ public class Player : MonoBehaviour
     {
         pv -= damage;
         healthbar.SetHealth(pv);
+    }
+
+    public void receive_item()
+    {
+        anim.SetBool("receive_item", true);
+        ChangeState(PlayerState.interact);
+    }
+
+    public void item_received()
+    {
+        anim.SetBool("receive_item", false);
+        ChangeState(PlayerState.walk);
     }
 }
