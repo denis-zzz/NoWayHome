@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Features
   m_EditorClassIdentifier: 
   compteur_tir: 0
+  compteur_stab: 0
   compteur_mort: 0
   compteur_mort_tir: 0
   compteur_immobile: 0

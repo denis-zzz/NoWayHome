@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        Item beginning_weapon = item_generator.Generate("pistolet", 1);
+        Item beginning_weapon = item_generator.Generate("couteau", 1);
         player.equiped_weapon = (PV_Item)beginning_weapon;
     }
 
@@ -31,6 +31,11 @@ public class GameManager : MonoBehaviour
     public void increase_cpt_tir()
     {
         features.compteur_tir++;
+    }
+
+    public void increase_cpt_stab()
+    {
+        features.compteur_stab++;
     }
 
     public void increase_cpt_mort()

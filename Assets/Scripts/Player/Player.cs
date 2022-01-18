@@ -27,6 +27,11 @@ public class Player : MonoBehaviour
     public Zone zone;
     public Float_Value damage;
     public Inventory inventory;
+    // SIGNALS STUFF
+    //------------------------------------
+    public SignalSender tir_signal;
+    public SignalSender stab_signal;
+    public SignalSender sprint_signal;
 
     // Start is called before the first frame update
     void Start()
@@ -72,6 +77,7 @@ public class Player : MonoBehaviour
     {
         if (equiped_weapon.pv_item_type == PV_ItemType.couteau)
         {
+            stab_signal.raise();
             anim.SetTrigger("attack_melee");
             if (Mathf.Abs(Mathf.RoundToInt(shoot.attackDir.x)) ==
             Mathf.Abs(Mathf.RoundToInt(shoot.attackDir.y)))
@@ -85,6 +91,7 @@ public class Player : MonoBehaviour
         {
             if (ammo > 0)
             {
+                tir_signal.raise();
                 shoot.Fire();
                 ammo -= 1;
             }
@@ -98,6 +105,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift))
         {
+            sprint_signal.raise();
             speed = og_speed + 2;
         }
         rigid.MovePosition(transform.position + change.normalized * speed *
@@ -143,6 +151,16 @@ public class Player : MonoBehaviour
     public void item_received()
     {
         anim.SetBool("receive_item", false);
+        ChangeState(PlayerState.walk);
+    }
+
+    public void dialog_started()
+    {
+        ChangeState(PlayerState.interact);
+    }
+
+    public void dialog_ended()
+    {
         ChangeState(PlayerState.walk);
     }
 }

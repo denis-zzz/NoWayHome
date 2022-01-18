@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nom: testy
   prix: 100
-  quantite: 1024
+  quantite: 1
   desc: c'est un test
   item_type: 2

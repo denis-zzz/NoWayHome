@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerFeatures : ScriptableObject
 {
     public int compteur_tir;
+    public int compteur_stab;
     public int compteur_mort;
     public int compteur_mort_tir;
     public float compteur_immobile;

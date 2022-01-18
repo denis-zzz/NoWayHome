@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Chest : Interactible
 {
@@ -8,15 +9,18 @@ public class Chest : Interactible
     public bool isOpen;
     public SignalSender item_signal;
     public SignalSender item_received_signal;
+    public SignalSender interagit;
     private Animator anim;
     public Inventory playerInventory;
+    public GameObject dialogBox;
+    public Text dialogText;
 
     void Start()
     {
         anim = GetComponent<Animator>();
     }
 
-    public override void Update()
+    void Update()
     {
         if (Input.GetKeyDown("space") && playerInRange)
         {

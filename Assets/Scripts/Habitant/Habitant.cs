@@ -32,10 +32,8 @@ public class Habitant : Interactible
         changeDirection();
     }
 
-    public override void Update()
+    void Update()
     {
-        base.Update();
-
         if (isMoving)
         {
             moveTimeSeconds -= Time.deltaTime;
