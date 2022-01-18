@@ -19,12 +19,19 @@ public class Shoot : MonoBehaviour
         anim = transform.Find("Shoot").GetComponent<Animator>();
     }
 
+    void Update()
+    {
+        if (this.gameObject.CompareTag("Player"))
+        {
+            Vector3 mousePos = UtilsClass.GetMouseWorldPosition();
+            attackDir = (mousePos - transform.position).normalized;
+            float angle = Mathf.Atan2(attackDir.y, attackDir.x) * Mathf.Rad2Deg;
+            shootTransform.eulerAngles = new Vector3(0, 0, angle);
+        }
+    }
+
     public void Fire()
     {
-        Vector3 mousePos = UtilsClass.GetMouseWorldPosition();
-        attackDir = (mousePos - transform.position).normalized;
-        float angle = Mathf.Atan2(attackDir.y, attackDir.x) * Mathf.Rad2Deg;
-        shootTransform.eulerAngles = new Vector3(0, 0, angle);
         anim.SetTrigger("Shoot");
 
         GameObject bullet = Instantiate(bulletPrefab,
