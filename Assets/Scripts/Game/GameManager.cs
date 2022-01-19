@@ -73,6 +73,11 @@ public class GameManager : MonoBehaviour
         features.compteur_loot++;
     }
 
+    public void increase_cpt_trade()
+    {
+        features.compteur_trade++;
+    }
+
     public void increase_cpt_killer()
     {
         features.compteur_killer++;

@@ -21,5 +21,6 @@ MonoBehaviour:
   compteur_interactions: 0
   compteur_dialogue: 0
   compteur_loot: 0
+  compteur_trade: 0
   compteur_killer: 0
   compteur_socializer: 0

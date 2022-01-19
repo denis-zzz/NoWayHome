@@ -288,6 +288,7 @@ GameObject:
   - component: {fileID: 121487304}
   - component: {fileID: 121487303}
   - component: {fileID: 121487302}
+  - component: {fileID: 121487305}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -513,6 +514,34 @@ MonoBehaviour:
       - m_Target: {fileID: 121487296}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: increase_cpt_sprint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &121487305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121487295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc5b2b92a755a4499b29f5afe7ee864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: 3e1c77a3dac05b746ba5f9fa109d8635, type: 2}
+  signalEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 121487296}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: increase_cpt_trade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

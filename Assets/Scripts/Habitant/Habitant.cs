@@ -106,7 +106,29 @@ public class Habitant : Interactible
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        chooseDifferentDirection();
+        chooseOppositeDirection();
+    }
+
+    private void chooseOppositeDirection()
+    {
+        Vector3 tmp = direction;
+        if (tmp == Vector3.right)
+        {
+            direction = Vector3.left;
+        }
+        else if (tmp == Vector3.up)
+        {
+            direction = Vector3.down;
+        }
+        else if (tmp == Vector3.left)
+        {
+            direction = Vector3.right;
+        }
+        else if (tmp == Vector3.down)
+        {
+            direction = Vector3.up;
+        }
+        updateAnim();
     }
 
     private void chooseDifferentDirection()
