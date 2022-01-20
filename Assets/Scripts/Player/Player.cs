@@ -33,6 +33,9 @@ public class Player : MonoBehaviour, ISavable
     public SignalSender tir_signal;
     public SignalSender stab_signal;
     public SignalSender sprint_signal;
+    public SignalSender knife_signal;
+    public SignalSender gun_signal;
+
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +45,6 @@ public class Player : MonoBehaviour, ISavable
         anim = GetComponent<Animator>();
         og_speed = speed;
 
-        damage.runtime_value = equiped_weapon.puissance;
         shoot = GetComponent<Shoot>();
 
         pv = max_pv.runtime_value;
@@ -173,6 +175,8 @@ public class Player : MonoBehaviour, ISavable
             transform.position.y},
             save_pv = pv,
             save_ammo = ammo,
+            save_state = state,
+            save_wep_type = equiped_weapon.pv_item_type
         };
 
         return saveData;
@@ -186,6 +190,17 @@ public class Player : MonoBehaviour, ISavable
         pv = saveData.save_pv;
         healthbar.SetHealth(pv);
         ammo = saveData.save_ammo;
+        state = saveData.save_state;
+        PV_ItemType type = saveData.save_wep_type;
+        switch (type)
+        {
+            case PV_ItemType.couteau:
+                knife_signal.raise();
+                break;
+            case PV_ItemType.pistolet:
+                gun_signal.raise();
+                break;
+        }
     }
 }
 
@@ -195,4 +210,6 @@ public class PlayerSaveData
     public float[] position;
     public float save_pv;
     public int save_ammo;
+    public PlayerState save_state;
+    public PV_ItemType save_wep_type;
 }

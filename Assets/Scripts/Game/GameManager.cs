@@ -14,8 +14,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        Item beginning_weapon = item_generator.Generate("couteau", 1);
-        player.equiped_weapon = (PV_Item)beginning_weapon;
+        give_player_gun();
     }
 
     public void GenerateBandit()
@@ -101,6 +100,20 @@ public class GameManager : MonoBehaviour
     public void increase_cpt_socializer()
     {
         features.compteur_socializer++;
+    }
+
+    public void give_player_gun()
+    {
+        Item weapon = item_generator.Generate("pistolet", 1);
+        player.equiped_weapon = (PV_Item)weapon;
+        player.damage.runtime_value = player.equiped_weapon.puissance;
+    }
+
+    public void give_player_knife()
+    {
+        Item weapon = item_generator.Generate("couteau", 1);
+        player.equiped_weapon = (PV_Item)weapon;
+        player.damage.runtime_value = player.equiped_weapon.puissance;
     }
 
 

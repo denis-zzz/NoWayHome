@@ -289,6 +289,9 @@ GameObject:
   - component: {fileID: 121487303}
   - component: {fileID: 121487302}
   - component: {fileID: 121487305}
+  - component: {fileID: 121487306}
+  - component: {fileID: 121487308}
+  - component: {fileID: 121487307}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -542,6 +545,74 @@ MonoBehaviour:
       - m_Target: {fileID: 121487296}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: increase_cpt_trade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &121487306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121487295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ddb908fa7c729419f05867d9550daf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &121487307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121487295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc5b2b92a755a4499b29f5afe7ee864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: 93cad3d4f81656244a5dc0b1739ec471, type: 2}
+  signalEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 121487296}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: give_player_gun
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &121487308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121487295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc5b2b92a755a4499b29f5afe7ee864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: 37b2a8e6fd1344b40b6af994263ac5e9, type: 2}
+  signalEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 121487296}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: give_player_knife
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9433,6 +9504,7 @@ GameObject:
   - component: {fileID: 1441205618}
   - component: {fileID: 1441205619}
   - component: {fileID: 1441205620}
+  - component: {fileID: 1441205621}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -9558,6 +9630,8 @@ MonoBehaviour:
   tir_signal: {fileID: 11400000, guid: 1025955b3c992624a8ea65d5c4242985, type: 2}
   stab_signal: {fileID: 11400000, guid: a0dd325f83797b043a1019afac2d4daa, type: 2}
   sprint_signal: {fileID: 11400000, guid: 8bb490de069101f499f4b578b1788ca3, type: 2}
+  knife_signal: {fileID: 11400000, guid: 37b2a8e6fd1344b40b6af994263ac5e9, type: 2}
+  gun_signal: {fileID: 11400000, guid: 93cad3d4f81656244a5dc0b1739ec471, type: 2}
 --- !u!61 &1441205617
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9645,6 +9719,19 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8330775045792431494, guid: d854ca773d8b18d49993f34bd3a9b2cc, type: 3}
   firepoint: {fileID: 508247140}
   bulletForce: 5
+--- !u!114 &1441205621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441205612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4881f89f8b930e34489bbb86116ccd4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueId: d0ee3b54-5ce7-432f-99c7-fa4e99e3dd6a
 --- !u!1 &1443632940
 GameObject:
   m_ObjectHideFlags: 0
