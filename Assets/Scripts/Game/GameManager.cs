@@ -28,6 +28,21 @@ public class GameManager : MonoBehaviour
         bandit_generator.Generate(nombre, liste_armes, spawn_points);
     }
 
+    void Update()
+    {
+        if (player.state == PlayerState.walk)
+        {
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                SavingSystem.i.Save("saveSlot");
+            }
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                SavingSystem.i.Load("saveSlot");
+            }
+        }
+    }
+
     public void increase_cpt_tir()
     {
         features.compteur_tir++;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public enum PlayerState
 {
@@ -10,7 +11,7 @@ public enum PlayerState
     stagger
 }
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, ISavable
 {
     public float speed;
     public PlayerState state;
@@ -163,4 +164,35 @@ public class Player : MonoBehaviour
     {
         ChangeState(PlayerState.walk);
     }
+
+    public object CaptureState()
+    {
+        var saveData = new PlayerSaveData()
+        {
+            position = new float[]{transform.position.x,
+            transform.position.y},
+            save_pv = pv,
+            save_ammo = ammo,
+        };
+
+        return saveData;
+    }
+
+    public void RestoreState(object state)
+    {
+        var saveData = (PlayerSaveData)state;
+        var pos = saveData.position;
+        transform.position = new Vector3(pos[0], pos[1]);
+        pv = saveData.save_pv;
+        healthbar.SetHealth(pv);
+        ammo = saveData.save_ammo;
+    }
+}
+
+[Serializable]
+public class PlayerSaveData
+{
+    public float[] position;
+    public float save_pv;
+    public int save_ammo;
 }
