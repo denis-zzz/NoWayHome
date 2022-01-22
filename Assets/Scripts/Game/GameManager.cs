@@ -116,5 +116,15 @@ public class GameManager : MonoBehaviour
         player.damage.runtime_value = player.equiped_weapon.puissance;
     }
 
+    public void sendDataRequest()
+    {
+
+    }
+
+    public void predictionRequest()
+    {
+
+    }
+
 
 }

@@ -7,8 +7,10 @@ public class Zone : MonoBehaviour
 {
     public GameObject virtualcam;
     public bool hostileZone;
+    public bool checkpoint;
     public List<Transform> spawnPoints;
     public SignalSender waveSignal;
+    public SignalSender checkpointSignal;
 
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
@@ -18,6 +20,11 @@ public class Zone : MonoBehaviour
             if (hostileZone)
             {
                 waveSignal.raise();
+            }
+
+            if (checkpoint)
+            {
+                checkpointSignal.raise();
             }
             virtualcam.SetActive(true);
         }
