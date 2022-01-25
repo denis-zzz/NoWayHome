@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class GameManager : MonoBehaviour
     private PV_Item bandit_wep;
     private List<PV_Item> liste_armes = new List<PV_Item>();
     public PlayerFeatures features;
+
+    //Web requests
+    private bool isInit = false;
+    private string result;
 
     void Awake()
     {
@@ -39,6 +44,12 @@ public class GameManager : MonoBehaviour
             {
                 SavingSystem.i.Load("saveSlot");
             }
+        }
+
+        if (!isInit)
+        {
+            StartCoroutine(GetRequest("https://rohouens.pythonanywhere.com/api/"));
+            isInit = true;
         }
     }
 
@@ -118,7 +129,7 @@ public class GameManager : MonoBehaviour
 
     public void sendDataRequest()
     {
-
+        
     }
 
     public void predictionRequest()
@@ -126,5 +137,32 @@ public class GameManager : MonoBehaviour
 
     }
 
+    IEnumerator GetRequest(string uri)
+    {
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+        {
+            // Request and wait for the desired page.
+            yield return webRequest.SendWebRequest();
 
+            string[] pages = uri.Split('/');
+            int page = pages.Length - 1;
+
+            switch (webRequest.result)
+            {
+                case UnityWebRequest.Result.ConnectionError:
+                    Debug.Log("WebRequest: error");
+                    break;
+                case UnityWebRequest.Result.DataProcessingError:
+                    Debug.LogError(pages[page] + ": Error: " + webRequest.error);
+                    break;
+                case UnityWebRequest.Result.ProtocolError:
+                    Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
+                    break;
+                case UnityWebRequest.Result.Success:
+                    result = webRequest.downloadHandler.text;
+                    Debug.Log(pages[page] + ":\nReceived: " + result);
+                    break;
+            }
+        }
+    }
 }
