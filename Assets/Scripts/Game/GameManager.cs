@@ -14,8 +14,10 @@ public class GameManager : MonoBehaviour
     public PlayerFeatures features;
 
     //Web requests
+    private static string BASE_URL = "https://rohouens.pythonanywhere.com/api/";
     private bool isInit = false;
     private string result;
+    private int joueur_id = 1;
 
     void Awake()
     {
@@ -48,7 +50,7 @@ public class GameManager : MonoBehaviour
 
         if (!isInit)
         {
-            StartCoroutine(GetRequest("https://rohouens.pythonanywhere.com/api/"));
+            sendDataRequest();
             isInit = true;
         }
     }
@@ -129,7 +131,21 @@ public class GameManager : MonoBehaviour
 
     public void sendDataRequest()
     {
-        
+        string request = BASE_URL + "?add";
+        request += "&joueur_id=" + joueur_id.ToString();
+        request += "&shotCounter=" + features.compteur_tir;
+        request += "&stabCounter=" + features.compteur_stab;
+        request += "&deathCounter=" + features.compteur_mort;
+        request += "&deathByShotGunCounter=" + features.compteur_mort_tir;
+        request += "&sprintTime=" + features.compteur_sprint;
+        request += "&killerCounter=" + features.compteur_killer;
+        request += "&socializerCounter=" + features.compteur_socializer;
+        request += "&freezeTime=" + features.compteur_immobile;
+        request += "&dialogCounter=" + features.compteur_dialogue;
+        request += "&interactionCounter=" + features.compteur_interactions;
+        request += "&tradeCounter=" + features.compteur_trade;
+        request += "&lootCounter=" + features.compteur_loot;
+        StartCoroutine(GetRequest(request));
     }
 
     public void predictionRequest()
@@ -141,6 +157,8 @@ public class GameManager : MonoBehaviour
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
+            Debug.Log("Request send: "+uri);
+
             // Request and wait for the desired page.
             yield return webRequest.SendWebRequest();
 
