@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 public enum ItemType
 {
     argent,
@@ -20,4 +21,10 @@ public class Item : ScriptableObject
     public int quantite;
     public string desc;
     public ItemType item_type;
+    public UnityEvent thisEvent;
+
+    public void Use()
+    {
+        thisEvent.Invoke();
+    }
 }

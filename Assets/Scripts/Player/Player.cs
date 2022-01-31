@@ -21,7 +21,6 @@ public class Player : MonoBehaviour, ISavable
     private Animator anim;
     public PV_Item equiped_weapon;
     public Float_Value max_pv;
-    public float pv;
     private Shoot shoot;
     public int ammo;
     public HealthBar healthbar;
@@ -36,7 +35,6 @@ public class Player : MonoBehaviour, ISavable
     public SignalSender knife_signal;
     public SignalSender gun_signal;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -47,9 +45,8 @@ public class Player : MonoBehaviour, ISavable
 
         shoot = GetComponent<Shoot>();
 
-        pv = max_pv.runtime_value;
-        healthbar.SetMaxHealth(max_pv.runtime_value);
-        healthbar.SetHealth(pv);
+        healthbar.SetMaxHealth(max_pv.initial_value);
+        healthbar.SetHealth(max_pv.runtime_value);
     }
 
     // Update is called once per frame
@@ -141,8 +138,19 @@ public class Player : MonoBehaviour, ISavable
 
     public void TakeDamage(float damage)
     {
-        pv -= damage;
-        healthbar.SetHealth(pv);
+        max_pv.runtime_value -= damage;
+        SetHealth();
+    }
+
+    public void Heal(float heal)
+    {
+        max_pv.runtime_value += heal;
+        SetHealth();
+    }
+
+    public void SetHealth()
+    {
+        healthbar.SetHealth(max_pv.runtime_value);
     }
 
     public void receive_item()
@@ -173,7 +181,7 @@ public class Player : MonoBehaviour, ISavable
         {
             position = new float[]{transform.position.x,
             transform.position.y},
-            save_pv = pv,
+            save_pv = max_pv.runtime_value,
             save_ammo = ammo,
             save_state = state,
             save_wep_type = equiped_weapon.pv_item_type
@@ -187,8 +195,8 @@ public class Player : MonoBehaviour, ISavable
         var saveData = (PlayerSaveData)state;
         var pos = saveData.position;
         transform.position = new Vector3(pos[0], pos[1]);
-        pv = saveData.save_pv;
-        healthbar.SetHealth(pv);
+        max_pv.runtime_value = saveData.save_pv;
+        healthbar.SetHealth(max_pv.runtime_value);
         ammo = saveData.save_ammo;
         state = saveData.save_state;
         PV_ItemType type = saveData.save_wep_type;

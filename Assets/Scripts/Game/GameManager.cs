@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 
         if (!isInit)
         {
-            sendDataRequest();
+            //sendDataRequest();
             isInit = true;
         }
     }
@@ -148,16 +148,11 @@ public class GameManager : MonoBehaviour
         StartCoroutine(GetRequest(request));
     }
 
-    public void predictionRequest()
-    {
-
-    }
-
     IEnumerator GetRequest(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
-            Debug.Log("Request send: "+uri);
+            Debug.Log("Request send: " + uri);
 
             // Request and wait for the desired page.
             yield return webRequest.SendWebRequest();

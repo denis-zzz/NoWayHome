@@ -6,7 +6,6 @@ using System.Linq;
 [CreateAssetMenu]
 public class Inventory : ScriptableObject
 {
-    public Item currentItem;
     public List<Item> items = new List<Item>();
 
     public void AddItem(Item item)

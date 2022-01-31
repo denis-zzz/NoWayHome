@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 3353807644274173036}
   - component: {fileID: 3019311523357478297}
   - component: {fileID: 3024274288631116006}
+  - component: {fileID: 4865049711476938834}
   m_Layer: 5
   m_Name: Item Slot
   m_TagString: Untagged
@@ -199,4 +200,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3019311523357478297}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4865049711476938834}
+        m_TargetAssemblyTypeName: ItemSlot, Assembly-CSharp
+        m_MethodName: ClickedOn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4865049711476938834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3552688384232358045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb5a378ab857484ca4719ea02bf9e9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: {fileID: 4037345425674990909}
+  item: {fileID: 0}
+  manager: {fileID: 0}

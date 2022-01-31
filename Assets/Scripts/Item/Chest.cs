@@ -48,7 +48,6 @@ public class Chest : Interactible
         {
             dialogText.text = item.desc;
             playerInventory.AddItem(item);
-            playerInventory.currentItem = item;
             item_signal.raise();
         }
         else
