@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class Chest : Interactible
 {
-    public Item item;
+    public List<Item> items;
     public bool isOpen;
+    private bool isBusy = false;
     public SignalSender item_signal;
     public SignalSender item_received_signal;
     public SignalSender interagit;
@@ -22,12 +23,12 @@ public class Chest : Interactible
 
     void Update()
     {
-        if (Input.GetKeyDown("space") && playerInRange)
+        if (Input.GetKeyDown("space") && playerInRange && !isBusy)
         {
             if (!isOpen)
             {
                 interagit.raise();
-                OpenChest();
+                StartCoroutine(startOpenChest());
             }
             else if (dialogBox.activeInHierarchy)
             {
@@ -38,23 +39,32 @@ public class Chest : Interactible
         }
     }
 
-    public void OpenChest()
+    IEnumerator startOpenChest()
+    {
+        yield return new WaitForEndOfFrame();
+        isBusy = true;
+        yield return OpenChest();
+    }
+
+    IEnumerator OpenChest()
     {
         dialogBox.SetActive(true);
         dialogText.gameObject.SetActive(true);
         anim.SetBool("open", true);
 
-        if (item != null)
-        {
-            dialogText.text = item.desc;
-            playerInventory.AddItem(item);
-            item_signal.raise();
-        }
+        if (items.Count == 0)
+            dialogText.text = "C'est vide !";
         else
         {
-            dialogText.text = "C'est vide !";
+            item_signal.raise();
+            foreach (Item item in items)
+            {
+                dialogText.text = item.desc;
+                playerInventory.AddItem(item);
+                yield return new WaitUntil(() => Input.GetKeyDown("space"));
+            }
         }
-
         isOpen = true;
+        isBusy = false;
     }
 }

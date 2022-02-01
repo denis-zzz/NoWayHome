@@ -23,7 +23,8 @@ public class ItemSlot : MonoBehaviour
         if (item)
         {
             manager.SetupDescriptionAndButton(item.desc,
-                (item.item_type == ItemType.soin), item);
+                (item.item_type == ItemType.soin ||
+                item.item_type == ItemType.arme), item);
         }
     }
 

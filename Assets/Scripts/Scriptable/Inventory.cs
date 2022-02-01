@@ -13,7 +13,7 @@ public class Inventory : ScriptableObject
         Item found_item = items.FirstOrDefault(i => i.nom == item.nom);
         if (found_item == null)
         {
-            items.Add(item);
+            items.Add(Instantiate(item));
         }
         else
         {

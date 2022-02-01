@@ -26,8 +26,7 @@ public class HabitantDialog : Interactible
         foreach (var line in dialog.lines)
         {
             dialogText.text = line;
-            yield return new WaitUntil(() =>
-           Input.GetKeyDown("space"));
+            yield return new WaitUntil(() => Input.GetKeyDown("space"));
             yield return new WaitForEndOfFrame();
         }
 

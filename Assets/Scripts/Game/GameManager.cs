@@ -19,11 +19,6 @@ public class GameManager : MonoBehaviour
     private string result;
     private int joueur_id = 1;
 
-    void Awake()
-    {
-        give_player_gun();
-    }
-
     public void GenerateBandit()
     {
         List<Transform> spawn_points = player.zone.spawnPoints;

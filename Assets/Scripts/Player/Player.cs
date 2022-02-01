@@ -22,7 +22,8 @@ public class Player : MonoBehaviour, ISavable
     public PV_Item equiped_weapon;
     public Float_Value max_pv;
     private Shoot shoot;
-    public int ammo;
+    public Inventory playerInventory;
+    private Item ammo;
     public HealthBar healthbar;
     public Zone zone;
     public Float_Value damage;
@@ -70,8 +71,8 @@ public class Player : MonoBehaviour, ISavable
             immobile_signal.raise();
         }
 
-        if (Input.GetButtonDown("Fire1") && state != PlayerState.attack
-        && state != PlayerState.stagger)
+        if (Input.GetButtonDown("Fire1") && equiped_weapon != null &&
+        state != PlayerState.attack && state != PlayerState.stagger)
         {
             ChangeState(PlayerState.attack);
             StartCoroutine(AttackCo());
@@ -92,13 +93,14 @@ public class Player : MonoBehaviour, ISavable
             anim.SetFloat("aimX", Mathf.RoundToInt(shoot.attackDir.x));
             anim.SetFloat("aimY", Mathf.RoundToInt((shoot.attackDir.y)));
         }
-        else
+        else if (equiped_weapon.pv_item_type == PV_ItemType.pistolet)
         {
-            if (ammo > 0)
+            ammo = playerInventory.items.Find((x) => x.item_type == ItemType.munition);
+            if (ammo != null && ammo.quantite > 0)
             {
                 tir_signal.raise();
                 shoot.Fire();
-                ammo -= 1;
+                ammo.quantite -= 1;
             }
         }
         yield return null;
@@ -222,7 +224,7 @@ public class PlayerSaveData
 {
     public float[] position;
     public float save_pv;
-    public int save_ammo;
+    public Item save_ammo;
     public PlayerState save_state;
     public PV_ItemType save_wep_type;
 }
