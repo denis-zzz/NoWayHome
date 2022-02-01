@@ -36,6 +36,9 @@ public class Player : MonoBehaviour, ISavable
     public SignalSender knife_signal;
     public SignalSender gun_signal;
     public SignalSender immobile_signal;
+    public SignalSender save_signal;
+    public SignalSender load_signal;
+    public SignalSender death_signal;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +52,17 @@ public class Player : MonoBehaviour, ISavable
 
         healthbar.SetMaxHealth(max_pv.initial_value);
         healthbar.SetHealth(max_pv.runtime_value);
+
+        save_signal.raise();
+    }
+
+    void Update()
+    {
+        if (max_pv.runtime_value <= 0)
+        {
+            load_signal.raise();
+            death_signal.raise();
+        }
     }
 
     // Update is called once per frame
@@ -189,9 +203,7 @@ public class Player : MonoBehaviour, ISavable
             position = new float[]{transform.position.x,
             transform.position.y},
             save_pv = max_pv.runtime_value,
-            save_ammo = ammo,
             save_state = state,
-            save_wep_type = equiped_weapon.pv_item_type
         };
 
         return saveData;
@@ -204,18 +216,7 @@ public class Player : MonoBehaviour, ISavable
         transform.position = new Vector3(pos[0], pos[1]);
         max_pv.runtime_value = saveData.save_pv;
         healthbar.SetHealth(max_pv.runtime_value);
-        ammo = saveData.save_ammo;
         state = saveData.save_state;
-        PV_ItemType type = saveData.save_wep_type;
-        switch (type)
-        {
-            case PV_ItemType.couteau:
-                knife_signal.raise();
-                break;
-            case PV_ItemType.pistolet:
-                gun_signal.raise();
-                break;
-        }
     }
 }
 
@@ -224,7 +225,5 @@ public class PlayerSaveData
 {
     public float[] position;
     public float save_pv;
-    public Item save_ammo;
     public PlayerState save_state;
-    public PV_ItemType save_wep_type;
 }

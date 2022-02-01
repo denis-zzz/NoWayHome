@@ -18,8 +18,8 @@ MonoBehaviour:
   compteur_mort_tir: 0
   compteur_immobile: 0
   compteur_sprint: 0
-  compteur_interactions: 1
-  compteur_dialogue: 1
+  compteur_interactions: 0
+  compteur_dialogue: 0
   compteur_loot: 0
   compteur_trade: 0
   compteur_killer: 0
