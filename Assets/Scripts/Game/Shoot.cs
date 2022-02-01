@@ -19,7 +19,7 @@ public class Shoot : MonoBehaviour
         anim = transform.Find("Shoot").GetComponent<Animator>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (this.gameObject.CompareTag("Player"))
         {

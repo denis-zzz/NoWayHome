@@ -32,7 +32,7 @@ public class Habitant : Interactible
         changeDirection();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (isMoving)
         {

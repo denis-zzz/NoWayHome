@@ -31,14 +31,18 @@ public class InventoryManager : MonoBehaviour
         {
             foreach (Item item in playerInventory.items)
             {
-                GameObject temp =
-                    Instantiate(blankInventorySlot,
-                    inventoryContent.transform.position, Quaternion.identity);
-                temp.transform.SetParent(inventoryContent.transform);
-                ItemSlot newSlot = temp.GetComponent<ItemSlot>();
-                if (newSlot)
+                if (item.quantite > 0)
                 {
-                    newSlot.Setup(item, this);
+                    GameObject temp =
+                        Instantiate(blankInventorySlot,
+                        inventoryContent.transform.position, Quaternion.identity);
+                    temp.transform.SetParent(inventoryContent.transform);
+                    ItemSlot newSlot = temp.GetComponent<ItemSlot>();
+                    if (newSlot)
+                    {
+                        newSlot.Setup(item, this);
+                        newSlot.ClickedOn();
+                    }
                 }
             }
         }
@@ -65,6 +69,20 @@ public class InventoryManager : MonoBehaviour
         if (currentItem)
         {
             currentItem.Use();
+            ClearInventorySlots();
+            MakeInventorySlots();
+            if (currentItem.quantite == 0)
+            {
+                SetTextAndButton("", false);
+            }
+        }
+    }
+
+    void ClearInventorySlots()
+    {
+        foreach (Transform child in inventoryContent.transform)
+        {
+            Destroy(child.gameObject);
         }
     }
 

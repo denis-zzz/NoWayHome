@@ -17,4 +17,5 @@ public class PlayerFeatures : ScriptableObject
     public int compteur_trade;
     public int compteur_killer;
     public int compteur_socializer;
+    public int compteur_inventaire;
 }

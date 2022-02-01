@@ -25,6 +25,16 @@ public class Item : ScriptableObject
 
     public void Use()
     {
-        thisEvent.Invoke();
+        if (quantite > 0)
+            thisEvent.Invoke();
+    }
+
+    public void DecreaseAmount(int amountToDecrease)
+    {
+        quantite -= amountToDecrease;
+        if (quantite < 0)
+        {
+            quantite = 0;
+        }
     }
 }

@@ -115,6 +115,11 @@ public class GameManager : MonoBehaviour
         features.compteur_socializer++;
     }
 
+    public void increase_cpt_inventaire()
+    {
+        features.compteur_inventaire++;
+    }
+
     public void give_player_gun()
     {
         Item weapon = item_generator.Generate("pistolet", 1);
@@ -145,6 +150,7 @@ public class GameManager : MonoBehaviour
         request += "&interactionCounter=" + features.compteur_interactions;
         request += "&tradeCounter=" + features.compteur_trade;
         request += "&lootCounter=" + features.compteur_loot;
+        request += "&inventoryCounter=" + features.compteur_inventaire;
         StartCoroutine(GetRequest(request));
     }
 

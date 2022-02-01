@@ -34,6 +34,7 @@ public class Player : MonoBehaviour, ISavable
     public SignalSender sprint_signal;
     public SignalSender knife_signal;
     public SignalSender gun_signal;
+    public SignalSender immobile_signal;
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +51,7 @@ public class Player : MonoBehaviour, ISavable
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (state == PlayerState.interact)
             return;
@@ -63,6 +64,10 @@ public class Player : MonoBehaviour, ISavable
         if (state == PlayerState.walk && change != Vector3.zero)
         {
             Walk();
+        }
+        else
+        {
+            immobile_signal.raise();
         }
 
         if (Input.GetButtonDown("Fire1") && state != PlayerState.attack
