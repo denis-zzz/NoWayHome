@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: soin_test
   m_EditorClassIdentifier: 
   nom: soin
-  prix: 0
-  quantite: 5
-  desc: c'est un soin qui soigne pas
+  prix: 10
+  quantite: 2
+  desc: c'est un soin
   item_type: 1
   thisEvent:
     m_PersistentCalls:
@@ -23,11 +23,23 @@ MonoBehaviour:
       - m_Target: {fileID: 777547214620848576, guid: 8200a361373a5084f9c79a892b1d4922, type: 3}
         m_TargetAssemblyTypeName: ItemHeal, Assembly-CSharp
         m_MethodName: Use
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000}
+        m_TargetAssemblyTypeName: Item, Assembly-CSharp
+        m_MethodName: DecreaseAmount
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

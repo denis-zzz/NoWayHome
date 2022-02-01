@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93b89042488aa6047ad3f26a353bb04a, type: 3}
-  m_Name: PlayerInventory
+  m_Script: {fileID: 11500000, guid: 6c96c640aac17e5459e1178a931cd2dd, type: 3}
+  m_Name: "bonjour occup\xE9"
   m_EditorClassIdentifier: 
-  items: []
+  lines:
+  - "je suis occup\xE9 l\xE0"

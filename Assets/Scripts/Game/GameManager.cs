@@ -36,22 +36,26 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (player.state == PlayerState.walk)
-        {
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                SavingSystem.i.Save("saveSlot");
-            }
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                SavingSystem.i.Load("saveSlot");
-            }
-        }
-
         if (!isInit)
         {
             //sendDataRequest();
             isInit = true;
+        }
+    }
+
+    public void save()
+    {
+        if (player.state == PlayerState.walk)
+        {
+            SavingSystem.i.Save("saveSlot");
+        }
+    }
+
+    public void load()
+    {
+        if (player.state == PlayerState.walk)
+        {
+            SavingSystem.i.Load("saveSlot");
         }
     }
 

@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 11400000, guid: 9355414969e9dad4a9e0cf5241bad155, type: 2}
   health_signal: {fileID: 11400000, guid: 158557ab691173643913b6ccd0ab287c, type: 2}
+  healPower: {fileID: 11400000, guid: 3d555ff256100bc4483ec474f5a50ee7, type: 2}

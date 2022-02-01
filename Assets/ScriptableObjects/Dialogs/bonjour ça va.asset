@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c96c640aac17e5459e1178a931cd2dd, type: 3}
-  m_Name: BONJOUR
+  m_Name: "bonjour \xE7a va"
   m_EditorClassIdentifier: 
   lines:
   - bonjour
