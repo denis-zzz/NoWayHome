@@ -5,7 +5,6 @@ using UnityEngine;
 public class Marchand : HabitantDialog
 {
     public Shop shop;
-    public SignalSender trade_signal;
     public IEnumerator Trade()
     {
         yield return shop.startTrading(this);
@@ -19,7 +18,6 @@ public class Marchand : HabitantDialog
             {
                 StartCoroutine(Trade());
                 interagit.raise();
-                trade_signal.raise();
             }
         }
     }

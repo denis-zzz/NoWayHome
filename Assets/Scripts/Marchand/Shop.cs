@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
+    public SignalSender trade_signal;
     public IEnumerator startTrading(Marchand merchant)
     {
         int selectedChoice = 0;
@@ -13,10 +14,12 @@ public class Shop : MonoBehaviour
 
         if (selectedChoice == 0)
         {
+            trade_signal.raise();
             Debug.Log("ACHAT");
         }
         else if (selectedChoice == 1)
         {
+            trade_signal.raise();
             Debug.Log("VENTE");
         }
         else if (selectedChoice == 2)

@@ -52,7 +52,7 @@ public class ChoiceBox : MonoBehaviour
             choice_list[i].SetSelected(i == currentChoice);
         }
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Space))
             choice_made = true;
     }
 }
