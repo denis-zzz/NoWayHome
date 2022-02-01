@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     private static string BASE_URL = "https://rohouens.pythonanywhere.com/api/";
     private bool isInit = false;
     private string result;
-    private int joueur_id = 1;
+    private int joueur_id = 77;
 
     public void GenerateBandit()
     {
@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         if (!isInit)
         {
             //sendDataRequest();
+            Debug.Log("emotion: " + predictRequest());
             isInit = true;
         }
     }
@@ -151,6 +152,26 @@ public class GameManager : MonoBehaviour
         request += "&lootCounter=" + features.compteur_loot;
         request += "&inventoryCounter=" + features.compteur_inventaire;
         StartCoroutine(GetRequest(request));
+    }
+
+    public int predictRequest()
+    {
+        string request = BASE_URL + "?predict";
+        request += "&shotCounter=" + features.compteur_tir;
+        request += "&stabCounter=" + features.compteur_stab;
+        request += "&deathCounter=" + features.compteur_mort;
+        request += "&deathByShotGunCounter=" + features.compteur_mort_tir;
+        request += "&sprintTime=" + features.compteur_sprint;
+        request += "&killerCounter=" + features.compteur_killer;
+        request += "&socializerCounter=" + features.compteur_socializer;
+        request += "&freezeTime=" + features.compteur_immobile;
+        request += "&dialogCounter=" + features.compteur_dialogue;
+        request += "&interactionCounter=" + features.compteur_interactions;
+        request += "&tradeCounter=" + features.compteur_trade;
+        request += "&lootCounter=" + features.compteur_loot;
+        request += "&inventoryCounter=" + features.compteur_inventaire;
+        StartCoroutine(GetRequest(request));
+        return int.Parse(result);
     }
 
     IEnumerator GetRequest(string uri)
