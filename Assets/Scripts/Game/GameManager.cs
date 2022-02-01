@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
 
     //Web requests
     private static string BASE_URL = "https://rohouens.pythonanywhere.com/api/";
-    private bool isInit = false;
     private string result;
     private int joueur_id = 77;
 
@@ -27,16 +26,6 @@ public class GameManager : MonoBehaviour
         liste_armes.Add((PV_Item)item_generator.Generate("pistolet", 1));
 
         bandit_generator.Generate(nombre, liste_armes, spawn_points);
-    }
-
-    void Update()
-    {
-        if (!isInit)
-        {
-            //sendDataRequest();
-            Debug.Log("emotion: " + predictRequest());
-            isInit = true;
-        }
     }
 
     public void save()
@@ -172,6 +161,20 @@ public class GameManager : MonoBehaviour
         request += "&inventoryCounter=" + features.compteur_inventaire;
         StartCoroutine(GetRequest(request));
         return int.Parse(result);
+    }
+
+    public void adapt()
+    {
+        int emotion = predictRequest();
+        switch (emotion)
+        {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+        }
     }
 
     IEnumerator GetRequest(string uri)

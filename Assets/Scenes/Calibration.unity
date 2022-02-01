@@ -995,12 +995,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 343177963303270435, guid: fd1df2a1f3133e446a83b393dd6f9677, type: 3}
       propertyPath: checkpoint
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 343177963303270435, guid: fd1df2a1f3133e446a83b393dd6f9677, type: 3}
       propertyPath: saveSignal
       value: 
-      objectReference: {fileID: 11400000, guid: 1d7e1887ff8186d429bbd6b6369b594a, type: 2}
+      objectReference: {fileID: 11400000, guid: e5e92e1ba079aeb4d81ff694d8b5eaf8, type: 2}
     - target: {fileID: 343177963303270435, guid: fd1df2a1f3133e446a83b393dd6f9677, type: 3}
       propertyPath: waveSignal
       value: 
@@ -9198,7 +9198,7 @@ PrefabInstance:
     - target: {fileID: 343177963303270435, guid: fd1df2a1f3133e446a83b393dd6f9677, type: 3}
       propertyPath: saveSignal
       value: 
-      objectReference: {fileID: 11400000, guid: 1d7e1887ff8186d429bbd6b6369b594a, type: 2}
+      objectReference: {fileID: 11400000, guid: e5e92e1ba079aeb4d81ff694d8b5eaf8, type: 2}
     - target: {fileID: 343177963303270435, guid: fd1df2a1f3133e446a83b393dd6f9677, type: 3}
       propertyPath: waveSignal
       value: 
