@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c96c640aac17e5459e1178a931cd2dd, type: 3}
   m_Name: MarchandDialog
   m_EditorClassIdentifier: 
-  lines:
-  - Venez donc voir mes produits !
+  complete_lines:
+  - venez donc voir mes produits
+  - de magnifiques bijoux !
+  short_lines:
+  - "ach\xE8te"

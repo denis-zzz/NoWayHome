@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     private static string BASE_URL = "https://rohouens.pythonanywhere.com/api/";
     private string result;
     private int joueur_id = 77;
+    public static bool initDone = false;
 
     // Parameters
     public Float_Value nombre_bandit;
@@ -24,6 +25,16 @@ public class GameManager : MonoBehaviour
     public Float_Value healPower;
     public Float_Value knifeDamage;
     public Float_Value playerDamageBonus;
+    public Boolean_Value shortDialogs;
+
+    void Awake()
+    {
+        if (initDone == false)
+        {
+            initDone = true;
+            features.reset();
+        }
+    }
 
     public void GenerateBandit()
     {
@@ -45,10 +56,7 @@ public class GameManager : MonoBehaviour
 
     public void load()
     {
-        if (player.state == PlayerState.walk)
-        {
-            SavingSystem.i.Load("saveSlot");
-        }
+        SavingSystem.i.Load("saveSlot");
     }
 
     public void increase_cpt_tir()
@@ -184,13 +192,33 @@ public class GameManager : MonoBehaviour
         int emotion = predictRequest();
         switch (emotion)
         {
+            // fun
             case 1:
+                Debug.Log("Fun");
                 break;
+            // frustrating
             case 2:
+                Debug.Log("Frustrating");
+
+                gunDamage.runtime_value = Mathf.Min(gunDamage.runtime_value - 1, 1);
+                knifeDamage.runtime_value = Mathf.Min(knifeDamage.runtime_value - 1, 1);
+                healPower.runtime_value += 1;
+                playerDamageBonus.runtime_value += 1;
+                player.damage += playerDamageBonus.runtime_value;
                 break;
+            // boring
             case 3:
+                Debug.Log("Boring");
+
+                shortDialogs.runtime_value = true;
+                nombre_bandit.runtime_value += 3;
+
+                healPower.runtime_value -= 1;
+                player.damage -= playerDamageBonus.runtime_value;
+                bandit_pv.runtime_value += 1;
                 break;
         }
+        features.reset();
     }
 
     IEnumerator GetRequest(string uri)

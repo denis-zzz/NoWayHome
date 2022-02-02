@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2842c1ad4327d40815813fa26a9f39, type: 3}
   m_Name: KnifeDamage
   m_EditorClassIdentifier: 
-  initial_value: 1
+  initial_value: 2
+  runtime_value: 2

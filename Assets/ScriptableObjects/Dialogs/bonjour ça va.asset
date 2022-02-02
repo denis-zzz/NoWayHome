@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c96c640aac17e5459e1178a931cd2dd, type: 3}
   m_Name: "bonjour \xE7a va"
   m_EditorClassIdentifier: 
-  lines:
+  complete_lines:
   - bonjour
-  - "\xE7a va"
+  - je m'appelle billy
+  - ravi de faire votre connaissance
+  - vous habitez dans le coin ?
+  - il y a pas grand chose ici
+  - "mais profitez de votre s\xE9jour"
+  short_lines:
   - moi c'est billy
+  - "bonne journ\xE9e !"

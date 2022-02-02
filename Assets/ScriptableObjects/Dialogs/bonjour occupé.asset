@@ -12,5 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c96c640aac17e5459e1178a931cd2dd, type: 3}
   m_Name: "bonjour occup\xE9"
   m_EditorClassIdentifier: 
-  lines:
+  complete_lines:
+  - bonjour
+  - "comment \xE7a va ?"
+  - "je suis un peu occup\xE9 en ce moment"
+  - repassez me voir un peu plus tard
+  - merci !
+  short_lines:
   - "je suis occup\xE9 l\xE0"

@@ -56,16 +56,6 @@ public class Player : MonoBehaviour, ISavable
         save_signal.raise();
     }
 
-    void Update()
-    {
-        if (max_pv.runtime_value <= 0)
-        {
-            load_signal.raise();
-            death_signal.raise();
-        }
-    }
-
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (state == PlayerState.interact)
@@ -161,6 +151,11 @@ public class Player : MonoBehaviour, ISavable
     {
         max_pv.runtime_value -= damage;
         SetHealth();
+        if (max_pv.runtime_value <= 0)
+        {
+            load_signal.raise();
+            death_signal.raise();
+        }
     }
 
     public void Heal(float heal)

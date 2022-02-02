@@ -12,11 +12,14 @@ public class Zone : MonoBehaviour
     public SignalSender waveSignal;
     public SignalSender adaptSignal;
     public SignalSender saveSignal;
+    public bool first_time = true;
 
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && !other.isTrigger)
         {
+            virtualcam.SetActive(true);
+
             other.GetComponent<Player>().zone = this;
             if (hostileZone)
             {
@@ -26,13 +29,14 @@ public class Zone : MonoBehaviour
             if (checkpoint)
             {
                 saveSignal.raise();
-                if (SceneManager.GetActiveScene().name != "Calibration")
+                if (SceneManager.GetActiveScene().name != "Calibration"
+                && first_time)
                 {
                     adaptSignal.raise();
+                    first_time = false;
                 }
 
             }
-            virtualcam.SetActive(true);
         }
     }
 

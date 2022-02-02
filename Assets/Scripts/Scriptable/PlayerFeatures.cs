@@ -19,4 +19,22 @@ public class PlayerFeatures : ScriptableObject
     public int compteur_socializer;
     public int compteur_inventaire;
     public int compteur_dialogue_skip;
+
+    public void reset()
+    {
+        compteur_tir = 0;
+        compteur_stab = 0;
+        compteur_mort = 0;
+        compteur_mort_tir = 0;
+        compteur_immobile = 0;
+        compteur_sprint = 0;
+        compteur_interactions = 0;
+        compteur_dialogue = 0;
+        compteur_loot = 0;
+        compteur_trade = 0;
+        compteur_killer = 0;
+        compteur_socializer = 0;
+        compteur_inventaire = 0;
+        compteur_dialogue_skip = 0;
+    }
 }
