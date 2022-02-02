@@ -48,6 +48,11 @@ Le jeu sauvegarde périodiquement des données comme la position du joueur dans 
 
 Le code tire grandement avantage des Scriptable Objects et de signaux. Les classes communiquent donc entre elles sans dépendre les unes des autres. On peut donc facilement rajouter et retirer des classes sans tout casser. Par exemple quand le joueur démarre un dialogue avec un PNJ, le PNJ ne sait pas que c'est le joueur qui a initié le dialogue et la classe Joueur ne sait même pas qu'il est dans un dialogue, il est juste privé de mouvement le temps que le texte s'affiche à l'écran. Cela permettrait donc de faire des choses comme 2 PNJ qui dialoguent.
 
+Pistes d'amélioration :
+* Améliorer l’accuracy de l’arbre de décision
+* Ajouter un autre dispositif de trace (un téléphone physique avait été l'idée de départ)
+
+
 # Commandes
 ZQSD pour se déplacer  
 I pour ouvrir l'inventaire  
