@@ -567,7 +567,7 @@ MonoBehaviour:
   chase_radius: 4
   attack_radius: 1
   state: 0
-  damage: 0
+  equiped_weapon: {fileID: 0}
   healthbar: {fileID: 8087362327358552538}
   randomRadius: 2
   randomTimer: 2
@@ -612,6 +612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrust: 2
+  knifeDamage: {fileID: 11400000, guid: 1de183b960e2f1b4a847719645598f70, type: 2}
 --- !u!114 &7297836682222278950
 MonoBehaviour:
   m_ObjectHideFlags: 0

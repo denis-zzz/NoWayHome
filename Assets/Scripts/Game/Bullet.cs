@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
                 {
                     float damage =
                     GameObject.FindGameObjectWithTag("Player").
-                    GetComponent<Player>().damage.runtime_value;
+                    GetComponent<Player>().damage;
 
                     other.GetComponent<Bandit>().TakeDamage(damage);
                 }

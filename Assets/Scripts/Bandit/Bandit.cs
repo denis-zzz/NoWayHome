@@ -18,7 +18,6 @@ public class Bandit : MonoBehaviour
     public float attack_radius;
     private Rigidbody2D rigid;
     public BanditState state;
-    public float damage;
     public PV_Item equiped_weapon;
     public HealthBar healthbar;
 
@@ -45,7 +44,6 @@ public class Bandit : MonoBehaviour
         state = BanditState.random;
 
         pv = max_pv.runtime_value;
-        damage = equiped_weapon.puissance;
 
         if (equiped_weapon.pv_item_type == PV_ItemType.couteau)
             chase_radius = 4;

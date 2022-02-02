@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
     public Player player;
     public ItemGenerator item_generator;
     public BanditGenerator bandit_generator;
-    public Float_Value nombre_bandit;
     private PV_Item bandit_wep;
     private List<PV_Item> liste_armes = new List<PV_Item>();
     public PlayerFeatures features;
@@ -17,6 +16,14 @@ public class GameManager : MonoBehaviour
     private static string BASE_URL = "https://rohouens.pythonanywhere.com/api/";
     private string result;
     private int joueur_id = 77;
+
+    // Parameters
+    public Float_Value nombre_bandit;
+    public Float_Value bandit_pv;
+    public Float_Value gunDamage;
+    public Float_Value healPower;
+    public Float_Value knifeDamage;
+    public Float_Value playerDamageBonus;
 
     public void GenerateBandit()
     {
@@ -113,14 +120,16 @@ public class GameManager : MonoBehaviour
     {
         Item weapon = item_generator.Generate("pistolet", 1);
         player.equiped_weapon = (PV_Item)weapon;
-        player.damage.runtime_value = player.equiped_weapon.puissance;
+        player.damage = player.equiped_weapon.puissance
+        + playerDamageBonus.runtime_value;
     }
 
     public void give_player_knife()
     {
         Item weapon = item_generator.Generate("couteau", 1);
         player.equiped_weapon = (PV_Item)weapon;
-        player.damage.runtime_value = player.equiped_weapon.puissance;
+        player.damage = player.equiped_weapon.puissance
+        + playerDamageBonus.runtime_value;
     }
 
     public void sendDataRequest()

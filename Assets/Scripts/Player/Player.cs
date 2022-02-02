@@ -26,7 +26,7 @@ public class Player : MonoBehaviour, ISavable
     private Item ammo;
     public HealthBar healthbar;
     public Zone zone;
-    public Float_Value damage;
+    public float damage;
     public Inventory inventory;
     // SIGNALS STUFF
     //------------------------------------

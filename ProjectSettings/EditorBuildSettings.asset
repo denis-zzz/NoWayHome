@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Killer.unity
     guid: 91c408fd8e427bd44a432d5a27506224
+  - enabled: 1
+    path: Assets/Scenes/Game Finished.unity
+    guid: 3dbac31de7e7bcc49a001a76f4721059
   m_configObjects: {}

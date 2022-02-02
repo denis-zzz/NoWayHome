@@ -5,6 +5,7 @@ using UnityEngine;
 public class Knockback : MonoBehaviour
 {
     public float thrust;
+    public Float_Value knifeDamage;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -28,7 +29,7 @@ public class Knockback : MonoBehaviour
 
                     float damage =
                     this.transform.parent.GetComponent<Player>().
-                    damage.runtime_value;
+                    damage;
 
                     other.GetComponent<Bandit>().WaitKnock(damage);
                 }
@@ -42,11 +43,8 @@ public class Knockback : MonoBehaviour
                     difference = difference.normalized * thrust;
                     hit.AddForce(difference, ForceMode2D.Impulse);
 
-                    float damage =
-                    this.transform.GetComponent<Bandit>().damage;
-
                     hit.GetComponent<Player>().ChangeState(PlayerState.stagger);
-                    other.GetComponent<Player>().WaitKnock(damage);
+                    other.GetComponent<Player>().WaitKnock(knifeDamage.runtime_value);
                 }
             }
         }
