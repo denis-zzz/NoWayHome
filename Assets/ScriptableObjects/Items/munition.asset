@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nom: munition
   prix: 0
-  quantite: 10
+  quantite: 20
   desc: des munitions pour le pistolet
   item_type: 6
   thisEvent:

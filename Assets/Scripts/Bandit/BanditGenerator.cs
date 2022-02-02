@@ -21,6 +21,8 @@ public class BanditGenerator : MonoBehaviour
 
             bandit.GetComponent<Bandit>().equiped_weapon =
             armes[Random.Range(0, armes.Count)];
+
+            bandit.transform.SetParent(transf.parent);
             yield return new WaitForSeconds(.3f);
         }
     }

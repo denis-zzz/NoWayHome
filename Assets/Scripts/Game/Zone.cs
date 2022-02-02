@@ -41,6 +41,11 @@ public class Zone : MonoBehaviour
         if (other.CompareTag("Player") && !other.isTrigger)
         {
             virtualcam.SetActive(false);
+            foreach (Transform child in transform)
+            {
+                if (child.CompareTag("Bandit"))
+                    Destroy(child.gameObject);
+            }
         }
     }
 }
