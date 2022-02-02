@@ -65,3 +65,4 @@ X à tout moment pour fermer le jeu
 Provenance des sprites : https://opengameart.org/content/zelda-like-tilesets-and-sprites  
 Version d'Unity : 2020.3.19f1  
 Path des sauvegardes : [Utilisateur]/AppData/LocalLow/DefaultCompany/NoWayHome/saveSlot  
+Packages utilisés : [Cinemachine](https://unity.com/fr/unity/features/editor/art-and-design/cinemachine)
