@@ -91,6 +91,11 @@ public class GameManager : MonoBehaviour
         features.compteur_dialogue++;
     }
 
+    public void increase_cpt_dialogue_skip()
+    {
+        features.compteur_dialogue_skip++;
+    }
+
     public void increase_cpt_loot()
     {
         features.compteur_loot++;
@@ -149,6 +154,7 @@ public class GameManager : MonoBehaviour
         request += "&tradeCounter=" + features.compteur_trade;
         request += "&lootCounter=" + features.compteur_loot;
         request += "&inventoryCounter=" + features.compteur_inventaire;
+        request += "&dialogSkipCounter=" + features.compteur_dialogue_skip;
         StartCoroutine(GetRequest(request));
     }
 
@@ -168,6 +174,7 @@ public class GameManager : MonoBehaviour
         request += "&tradeCounter=" + features.compteur_trade;
         request += "&lootCounter=" + features.compteur_loot;
         request += "&inventoryCounter=" + features.compteur_inventaire;
+        request += "&dialogSkipCounter=" + features.compteur_dialogue_skip;
         StartCoroutine(GetRequest(request));
         return int.Parse(result);
     }

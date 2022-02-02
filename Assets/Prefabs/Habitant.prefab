@@ -461,6 +461,7 @@ MonoBehaviour:
   dialog: {fileID: 0}
   choice_box: {fileID: 0}
   dialog_end_signal: {fileID: 11400000, guid: 00d8a524a9cd82241bec6085f6ea67ff, type: 2}
+  dialog_skip_signal: {fileID: 11400000, guid: 897b5febbae487144a8fc25ef1cf835f, type: 2}
   interagit: {fileID: 11400000, guid: e8f5f657c09351543ab3e5159c361835, type: 2}
   inDialog: 0
   dialogBox: {fileID: 7194770096849950697}

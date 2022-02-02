@@ -10,6 +10,7 @@ public class HabitantDialog : Interactible
     public Dialog dialog;
     public ChoiceBox choice_box;
     public SignalSender dialog_end_signal;
+    public SignalSender dialog_skip_signal;
     public SignalSender interagit;
     public bool inDialog = false;
     public GameObject dialogBox;
@@ -55,6 +56,15 @@ public class HabitantDialog : Interactible
                 StartCoroutine(startDialog());
                 interagit.raise();
             }
+        }
+
+        if (inDialog && Input.GetKeyDown(KeyCode.Escape))
+        {
+            endDialog();
+            if (choice_box)
+                choice_box.endChoice();
+
+            dialog_skip_signal.raise();
         }
     }
 }

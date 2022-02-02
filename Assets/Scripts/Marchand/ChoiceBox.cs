@@ -29,6 +29,11 @@ public class ChoiceBox : MonoBehaviour
 
         onChoice?.Invoke(currentChoice);
 
+        endChoice();
+    }
+
+    public void endChoice()
+    {
         gameObject.SetActive(false);
         choice_text.gameObject.SetActive(false);
         foreach (Transform child in transform)

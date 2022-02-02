@@ -18,4 +18,5 @@ public class PlayerFeatures : ScriptableObject
     public int compteur_killer;
     public int compteur_socializer;
     public int compteur_inventaire;
+    public int compteur_dialogue_skip;
 }
