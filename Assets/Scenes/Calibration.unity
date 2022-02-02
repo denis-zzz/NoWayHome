@@ -572,7 +572,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 121487296}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: sendDataRequest
+        m_MethodName: adapt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
