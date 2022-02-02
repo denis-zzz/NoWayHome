@@ -36,6 +36,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Application.Quit();
+        }
+    }
+
     public void GenerateBandit()
     {
         List<Transform> spawn_points = player.zone.spawnPoints;
