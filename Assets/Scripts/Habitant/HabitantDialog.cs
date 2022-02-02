@@ -15,6 +15,8 @@ public class HabitantDialog : Interactible
     public bool inDialog = false;
     public GameObject dialogBox;
     public Text dialogText;
+    public Boolean_Value short_diag;
+    private List<string> lines;
 
     public IEnumerator startDialog(List<string> choices = null, Action<int> onChoice = null)
     {
@@ -24,7 +26,16 @@ public class HabitantDialog : Interactible
         dialog_signal.raise();
         inDialog = true;
 
-        foreach (var line in dialog.lines)
+        if (short_diag.runtime_value == true)
+        {
+            lines = dialog.short_lines;
+        }
+        else
+        {
+            lines = dialog.complete_lines;
+        }
+
+        foreach (var line in lines)
         {
             dialogText.text = line;
             yield return new WaitUntil(() => Input.GetKeyDown("space"));

@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 
 [CreateAssetMenu]
-public class Inventory : ScriptableObject
+public class Inventory : ScriptableObject, ISerializationCallbackReceiver
 {
     public List<Item> items = new List<Item>();
 
@@ -19,5 +19,15 @@ public class Inventory : ScriptableObject
         {
             items[items.IndexOf(found_item)].quantite += item.quantite;
         }
+    }
+
+    public void OnAfterDeserialize()
+    {
+        items = new List<Item>();
+    }
+
+    public void OnBeforeSerialize()
+    {
+
     }
 }

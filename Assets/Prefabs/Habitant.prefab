@@ -466,6 +466,7 @@ MonoBehaviour:
   inDialog: 0
   dialogBox: {fileID: 7194770096849950697}
   dialogText: {fileID: 7194770096510903763}
+  short_diag: {fileID: 11400000, guid: 33a19b5fab44a1d4eb5e0aeeb32666cf, type: 2}
 --- !u!1 &7194770097792582547
 GameObject:
   m_ObjectHideFlags: 0
